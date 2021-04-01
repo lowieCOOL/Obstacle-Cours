@@ -7,7 +7,13 @@ public class Scorer : MonoBehaviour
     int collisionCount = 0;
     private void OnCollisionEnter(Collision collision)
     {
-        collisionCount++;
-        Debug.Log("You've bumped into the wall " + collisionCount + " times.");
+        if (collision.gameObject.tag == "Wall or Cube")
+        {
+            collisionCount++;
+            Debug.Log("You've bumped into the wall " + collisionCount + " times.");
+            collision.gameObject.tag = "IsHit";
+        }
+        
+        
     }
 }
