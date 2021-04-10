@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Dropper : MonoBehaviour
 {
-    [SerializeField] float interval = 5;
+    [SerializeField] float minTimeUntillGravity = 4f;
+    [SerializeField] float maxTimeUntillGravity = 9f;
+    float interval;
     MeshRenderer renderer;
     Rigidbody rigidbody;
     
@@ -16,11 +18,12 @@ public class Dropper : MonoBehaviour
 
         renderer.enabled = false;
         rigidbody.useGravity = false;
+        interval = Random.Range(minTimeUntillGravity, maxTimeUntillGravity);
     }
 
     // Update is called once per frame
     void Update()
-    {       
+    {
         if (Time.time >= interval)
         {
             rigidbody.useGravity = true;
